@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_enable_remote_support_connections.html 
+summary: 'È possibile utilizzare il nodo di gestione per abilitare l"accesso al supporto NetApp per la risoluzione dei problemi.' 
+keywords: netapp, mnode, management node, connect to support, support tunnel, rst 
+---
+= Avviare una sessione remota di NetApp Support
+:allow-uri-read: 
+
+
+[role="lead"]
+Se hai bisogno di supporto tecnico per il tuo sistema NetApp HCI, il supporto NetApp può connetterti in remoto con il tuo sistema. Per avviare una sessione e ottenere l'accesso remoto, il supporto NetApp può aprire una connessione Secure Shell (SSH) inversa al proprio ambiente.
+
+.A proposito di questa attività
+Con il supporto NetApp è possibile aprire una porta TCP per una connessione a tunnel inverso SSH. Questa connessione consente al supporto NetApp di accedere al nodo di gestione. Se il nodo di gestione si trova dietro un server proxy, nel file sshd.config sono necessarie le seguenti porte TCP:
+
+[cols="15,25,60"]
+|===
+| Porta TCP | Descrizione | Direzione di connessione 
+
+
+| 443 | Chiamate API/HTTPS per l'inoltro inverso delle porte all'interfaccia utente Web tramite tunnel di supporto aperto | Nodo di gestione ai nodi di storage 
+
+
+| 22 | Accesso SSH | Nodo di gestione per nodi di storage o da nodi di storage a nodi di gestione 
+|===
+
+NOTE: Per impostazione predefinita, la capacità di accesso remoto è attivata nel nodo di gestione. Per disattivare la funzionalità di accesso remoto, vedere link:task_mnode_ssh_management.html["Gestire la funzionalità SSH sul nodo di gestione"]. Se necessario, è possibile abilitare nuovamente la funzionalità di accesso remoto.
+
+.Fasi
+* Accedere al nodo di gestione e aprire una sessione terminale.
+* Quando richiesto, immettere quanto segue:
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* Per chiudere il tunnel di supporto remoto, immettere quanto segue:
++
+`rst --killall`
+
+
+
+[discrete]
+== Trova ulteriori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per server vCenter"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["Pagina delle risorse NetApp HCI"^]
+

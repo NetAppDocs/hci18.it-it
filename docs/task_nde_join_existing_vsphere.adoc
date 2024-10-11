@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_join_existing_vsphere.html 
+summary: 'Scopri come configurare VMware vSphere durante l"implementazione di NetApp HCI.' 
+keywords: netapp, hci, netapp deployment engine, deployment, vsphere 
+---
+= Partecipa a un'implementazione VMware vSphere esistente
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Configurare NetApp HCI per sfruttare l'implementazione di vSphere esistente fornendo le informazioni e le credenziali della rete vCenter Server.
+
+.Di cosa hai bisogno
+* Se si sta partecipando a un'implementazione vSphere 6.7 esistente, assicurarsi che vCenter Server esegua la versione 6.7 Update 1.
+* Se si sta partecipando a un'implementazione vSphere 6.5 esistente, assicurarsi che vCenter Server esegua la versione 6.5 Update 2 o successiva.
+* Ottenere i dettagli di rete e le credenziali di amministratore per l'implementazione vSphere esistente.
+
+
+.A proposito di questa attività
+Se si uniscono più sistemi vCenter Server connessi tramite la modalità collegata a vCenter, NetApp HCI riconosce solo uno dei sistemi vCenter Server.
+
+
+NOTE: L'utilizzo del plug-in NetApp Element per vCenter Server per gestire le risorse del cluster di altri vCenter Server link:https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["Modalità collegata vCenter"^]è limitato solo ai cluster di storage locali.
+
+.Fasi
+. Selezionare *Join ed Extend una distribuzione vSphere esistente*.
+. Inserire il nome di dominio o l'indirizzo IP nel campo *vCenter Server Domain Name or IP address* (Nome di dominio o indirizzo IP del server vCenter). Se si immette un nome di dominio, è necessario inserire anche l'indirizzo IP di un server DNS attivo nel campo *DNS Server IP Address* (Indirizzo IP server DNS) visualizzato.
+. Immettere le credenziali di un amministratore vSphere nei campi *Nome utente e Password*.
+. Selezionare *continua*.
+
+
+[discrete]
+== Trova ulteriori informazioni
+
+* link:firmware_driver_versions.html["Versioni del firmware e dei driver ESXi supportate per NetApp HCI e versioni del firmware per i nodi di storage NetApp HCI"]
+

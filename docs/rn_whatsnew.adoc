@@ -1,0 +1,128 @@
+---
+sidebar: sidebar 
+permalink: docs/rn_whatsnew.html 
+summary: Scopri le novità di questa versione di NetApp HCI. 
+keywords: netapp, hci, element, new, whatsnew 
+---
+= Novità di NetApp HCI
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp aggiorna periodicamente NetApp HCI per offrire nuove funzionalità, miglioramenti e correzioni di bug. NetApp HCI 1.8P1 include Element 12,2 per i cluster storage.
+
+* La <<NetApp HCI 1.8P1>> sezione descrive le nuove funzioni e gli aggiornamenti di NetApp HCI versione 1.8P1.
+* La <<Elemento 12,2>> sezione descrive le nuove funzioni e gli aggiornamenti di NetApp Element 12,2.
+
+
+
+
+== NetApp HCI 1.8P1
+
+NetApp HCI 1.8P1 include miglioramenti di sicurezza e stabilità.
+
+
+
+=== Miglioramenti alla documentazione di NetApp HCI
+
+È ora possibile accedere alle informazioni su aggiornamento, espansione, monitoraggio e concetti di NetApp HCI in un formato semplice da navigare link:index.html["qui"^].
+
+
+
+=== Plug-in NetApp Element per la disponibilità di vCenter Server 4.5
+
+Il plug-in NetApp Element per vCenter Server 4,5 è disponibile al di fuori del nodo di gestione 12,2 e delle release di NetApp HCI 1.8P1. Per aggiornare il plug-in, seguire le istruzioni riportate nella link:concept_hci_upgrade_overview.html["Aggiornamenti NetApp HCI"]documentazione.
+
+
+
+=== Miglioramenti di NetApp Hybrid Cloud Control
+
+Il controllo del cloud ibrido NetApp è migliorato per la versione 1.8P1. https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["Scopri di più"^].
+
+
+
+== Elemento 12,2
+
+NetApp HCI 1.8P1 include Element 12,2 per i cluster storage. Element 12,2 introduce SolidFire Enterprise SDS, la crittografia software a riposo, la modalità di manutenzione, la maggiore sicurezza di accesso ai volumi, l'accesso FQDN (Fully Qualified Domain Name) alle interfacce utente, gli aggiornamenti del firmware dei nodi di storage e gli aggiornamenti della protezione.
+
+
+
+=== SDS aziendale di SolidFire
+
+Element 12,2 introduce SolidFire Enterprise SDS (eSDS). SolidFire eSDS offre i vantaggi della tecnologia SolidFire scale-out e dei servizi dati software NetApp Element sull'hardware di tua scelta che soddisfa la configurazione di riferimento per SolidFire eSDS. http://docs.netapp.com/sfe-122/index.jsp?topic=%2Fcom.netapp.doc.sfe-sds-ig%2FGUID-F1BDD19F-AF33-4CDE-B67F-C5E17D4E6DE9.html["Scopri di più"^].
+
+Di seguito sono riportati i nuovi metodi API Element correlati a SolidFire eSDS (http://docs.netapp.com/sfe-122/index.jsp?topic=%2Fcom.netapp.doc.sfe-sds-ug%2FGUID-4D335B61-6B68-4B81-AD6E-BCA1E7ABACD5.html["Informazioni API Element 12,2 per SolidFire eSDS"^] con ulteriori informazioni):
+
+* `GetLicenseKey`
+* `SetLicenseKey`
+
+
+
+
+=== Crittografia software a riposo
+
+Element 12,2 introduce la crittografia software a riposo, che è possibile abilitare quando si crea un cluster di storage (ed è abilitata per impostazione predefinita quando si crea un cluster di storage SolidFire SDS). Questa funzione crittografa tutti i dati memorizzati sugli SSD nei nodi di storage e causa solo un impatto molto ridotto (~2%) sulle performance sull'io del client.
+
+Di seguito sono riportati i metodi Element API correlati alla crittografia software a riposo ( http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-api/home.html["Guida di riferimento API Element"^]contiene maggiori informazioni):
+
+* `CreateCluster`
+
+
+
+
+=== Modalità di manutenzione
+
+Element 12,2 introduce la modalità di manutenzione, che consente di portare un nodo storage offline per manutenzione, quali aggiornamenti software o riparazioni host, impedendo al contempo una sincronizzazione completa di tutti i dati. Se uno o più nodi necessitano di manutenzione, è possibile ridurre al minimo l'impatto dell'i/o sul resto del cluster di storage abilitando la modalità di manutenzione per tali nodi prima di iniziare. Puoi utilizzare la modalità di manutenzione sia con nodi di appliance che con nodi eSDS di SolidFire.
+
+
+
+=== Maggiore sicurezza di accesso ai volumi
+
+È ora possibile limitare l'accesso al volume a determinati iniziatori in base all'associazione VLAN (rete virtuale). È possibile associare iniziatori nuovi o esistenti a una o più reti virtuali, limitando l'iniziatore alle destinazioni iSCSI accessibili tramite tali reti virtuali.
+
+Di seguito sono riportati i metodi API degli elementi aggiornati relativi a questi miglioramenti della protezione (la http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-api/home.html["Guida di riferimento API Element"^] contiene ulteriori informazioni):
+
+* `CreateInitiators`
+* `ModifyInitiators`
+* `AddAccount`
+* `ModifyAccount`
+
+
+
+
+=== Accesso FQDN (Fully Qualified Domain Name) alle interfacce utente
+
+Element 12,2 supporta l'accesso all'interfaccia web del cluster utilizzando FQDN. Nei cluster di storage Element 12,2, se si utilizza l'FQDN per accedere alle interfacce utente Web, ad esempio l'interfaccia utente Web Element, l'interfaccia utente per nodo o l'interfaccia utente del nodo di gestione, è necessario innanzitutto aggiungere un'impostazione del cluster di storage per identificare l'FQDN utilizzato dal cluster. Questa impostazione consente al cluster di reindirizzare correttamente una sessione di accesso e facilita una migliore integrazione con servizi esterni quali i responsabili delle chiavi e i provider di identità per l'autenticazione a più fattori. Questa funzione richiede i servizi di gestione versione 2,15 o successiva. link:task_nde_access_ui_fqdn.html["Scopri di più"].
+
+
+
+=== Aggiornamenti del firmware del nodo di storage
+
+Element 12,2 include aggiornamenti del firmware per i nodi storage. link:rn_relatedrn.html["Scopri di più"].
+
+
+
+=== Miglioramenti della sicurezza
+
+Element 12,2 risolve le vulnerabilità di sicurezza per i nodi storage e il nodo di gestione. http://security.netapp.com/["Scopri di più"^] informazioni su questi miglioramenti per la protezione.
+
+
+
+=== Nuovo SMART Warning per eventuali guasti dei dischi
+
+Element 12,2 esegue ora controlli periodici dello stato di salute sui dischi delle appliance SolidFire utilizzando dati SMART di salute provenienti dai dischi. Un disco che non supera IL controllo dello stato DI salute INTELLIGENTE potrebbe essere prossimo al guasto. Se un'unità non supera il controllo SMART Health, viene visualizzato un nuovo guasto del cluster di gravità critica: `Drive with serial: <serial number> in slot: <node slot><drive slot> has failed the SMART overall health check. To resolve this fault, replace the drive`
+
+[discrete]
+== Trova ulteriori informazioni
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["Note sulla versione di NetApp Hybrid Cloud Control and Management Services"^]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per server vCenter"^]
+* https://www.netapp.com/us/documentation/hci.aspx["Pagina delle risorse NetApp HCI"^]
+* http://docs.netapp.com/sfe-122/index.jsp["Centro di documentazione software SolidFire ed Element"^]
+* link:firmware_driver_versions.html["Versioni del firmware e dei driver ESXi supportate per NetApp HCI e versioni del firmware per i nodi di storage NetApp HCI"]
+

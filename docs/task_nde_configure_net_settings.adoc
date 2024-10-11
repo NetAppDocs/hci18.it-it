@@ -1,0 +1,126 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_configure_net_settings.html 
+summary: 'Scopri come configurare le impostazioni di rete per l"implementazione di NetApp HCI.' 
+keywords: netapp, hci, deployment, compatibility, nodes 
+---
+= Configurare le impostazioni di rete
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp HCI fornisce una pagina delle impostazioni di rete con un formato semplice per semplificare la configurazione di rete. Quando si completa il modulo Easy, NetApp HCI compila automaticamente gran parte delle informazioni rimanenti nella pagina delle impostazioni di rete. Prima di procedere, è possibile immettere le impostazioni di rete finali e verificare che la configurazione di rete sia corretta. Non è necessario compilare il modulo nella sua interezza.
+
+.Di cosa hai bisogno
+* Sono state ottenute le seguenti informazioni:
++
+** Il prefisso di denominazione pianificato per gli host e il cluster di storage
+** Tutte le subnet mask pianificate, l'indirizzo IP iniziale, il gateway predefinito e gli ID VLAN per le reti di gestione, iSCSI e vMotion
+** L'indirizzo IP, il gateway predefinito, gli ID VLAN e le informazioni sulla subnet mask per qualsiasi implementazione VMware vCenter pianificata
+** L'indirizzo del server NTP (Network Time Protocol) per NetApp HCI
+** Le informazioni sull'indirizzo IP del server DNS per NetApp HCI
+
+
+* Se si sta implementando uno switch distribuito vSphere, si dispone di una licenza vSphere Enterprise Plus pronta per essere applicata al termine dell'implementazione.
+* Se sono stati assegnati ID VLAN alle porte del nodo durante la configurazione dell'interfaccia utente terminale (TUI), tali porte sono state configurate con lo stesso ID VLAN durante la configurazione di rete. Non è necessario configurare le porte host contrassegnate come porte di accesso o VLAN native sulle porte degli switch collegati.
+* La configurazione dello switch di rete è stata verificata correttamente. Configurazioni dello switch non corrette (ad esempio, VLAN o dimensioni MTU non corrette) possono causare errori di implementazione.
+
+
+.A proposito di questa attività
+Se è stata selezionata la topologia di rete a due cavi per i nodi di calcolo, è necessario utilizzare gli ID VLAN per le reti vMotion e di storage per tutti i nodi di calcolo e di storage nella distribuzione (gli ID VLAN sono opzionali per le reti di gestione).
+
+
+NOTE: Negli ambienti che richiedono il tagging VLAN lato host prima dell'implementazione, se sono stati configurati ID VLAN sui nodi di calcolo e storage in modo che siano rilevabili dal NetApp Deployment Engine, assicurarsi di utilizzare le VLAN corrette durante la configurazione delle impostazioni di rete nel NetApp Deployment Engine.
+
+Se si esegue la distribuzione utilizzando un cluster di archiviazione a due o tre nodi, è possibile completare le informazioni sull'indirizzo IP per i nodi testimone nella pagina *Impostazioni di rete* dopo aver utilizzato il modulo Easy.
+
+.Fasi
+. Facoltativo: Per disattivare la convalida live delle informazioni di rete immesse in questa pagina, impostare l'opzione *convalida rete Live* su *Off*.
+. Nella sezione *servizi infrastruttura* della pagina *Impostazioni di rete*, immettere le informazioni relative al server DNS e NTP per NetApp HCI nei seguenti campi:
++
+|===
+| Campo | Descrizione 
+
+
+| *Indirizzo IP del server DNS 1* | L'indirizzo IP del server DNS primario per NetApp HCI. Se è stato specificato un server DNS nella pagina di configurazione di vCenter, questo campo viene compilato e di sola lettura. 
+
+
+| *Indirizzo IP server DNS 2 (opzionale)* | Indirizzo IP opzionale di un server DNS secondario per NetApp HCI. 
+
+
+| *Indirizzo server NTP 1* | L'indirizzo IP o il nome di dominio completo del server NTP primario per questa infrastruttura. 
+
+
+| *Indirizzo server NTP 2 (opzionale)* | Un indirizzo IP opzionale o un nome di dominio completo del server NTP secondario per questa infrastruttura. 
+|===
+. Selezionare *per risparmiare tempo, avviare il modulo Easy* per immettere meno impostazioni di rete.
++
+Viene visualizzata la finestra di dialogo *modulo semplice Impostazioni di rete*.
+
+. Immettere un prefisso di denominazione nel campo *prefisso di denominazione*.
++
+Il prefisso di denominazione viene applicato al nome di ciascun host e al nome del cluster di storage. I prefissi di denominazione hanno le seguenti caratteristiche:
+
++
+** Deve iniziare con una lettera
+** Può contenere lettere, numeri e trattini
+** Non può superare i 55 caratteri
+
+
+. Scegliere una delle seguenti opzioni per assegnare gli ID VLAN.
++
+In qualsiasi momento durante l'utilizzo del modulo, selezionare *Cancella* accanto a una riga per cancellare l'input da una riga di campi.
+
++
+
+NOTE: Quando si assegnano gli ID VLAN, si configurano i tag VLAN che NetApp HCI applicherà al traffico di rete. Non è necessario inserire la VLAN nativa come ID VLAN; per utilizzare la VLAN nativa per una rete, lasciare vuoto il campo appropriato.
+
++
+|===
+| Opzione | Fasi 
+
+
+| Assegnare gli ID VLAN  a| 
+.. Selezionare *Sì* per l'opzione *assegnare ID VLAN*.
+.. Nella colonna *VLAN ID*, inserire un tag VLAN da utilizzare per ogni tipo di traffico di rete che si desidera assegnare a una VLAN.
++
+Sia il traffico vMotion che il traffico iSCSI devono utilizzare un ID VLAN non condiviso.
+
+.. Selezionare *Avanti*.
+.. Nella colonna *Subnet*, immettere le definizioni delle subnet in formato CIDR per ciascun tipo di traffico di rete in ciascuna rete, ad esempio 192.168.1.0/24.
+.. Nella colonna *Gateway predefinito*, immettere l'indirizzo IP del gateway predefinito per ciascun tipo di traffico di rete in ogni rete.
+.. Nella colonna *Starting IP* (IP iniziale), immettere il primo indirizzo IP utilizzabile per ogni subnet di rete in ogni rete.
+
+
+
+
+| Non assegnare ID VLAN  a| 
+.. Selezionare *No* per l'opzione *si assegneranno gli ID VLAN*.
+.. Nella colonna *Subnet*, immettere le definizioni delle subnet in formato CIDR per ciascun tipo di traffico di rete in ciascuna rete, ad esempio 192.168.1.0/24.
+.. Nella colonna *Gateway predefinito*, immettere l'indirizzo IP del gateway predefinito per ciascun tipo di traffico di rete in ogni rete.
+.. Nella colonna *Starting IP* (IP iniziale*), immettere il primo indirizzo IP utilizzabile per ciascun tipo di traffico di rete in ciascuna rete.
+
+
+|===
+. Selezionare *Applica a impostazioni di rete*.
+. Selezionare *Sì* per confermare.
++
+Viene visualizzata la pagina *Impostazioni di rete* con le impostazioni specificate nel modulo semplice. NetApp HCI convalida gli indirizzi IP immessi. È possibile disattivare questa convalida con il pulsante Disattiva convalida di Live Network.
+
+. Verificare che i dati inseriti automaticamente siano corretti.
+. Selezionare *continua*.
+
+
+
+
+== Trova ulteriori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per server vCenter"^]
+* https://www.netapp.com/us/documentation/hci.aspx["Pagina delle risorse NetApp HCI"^]
+* http://docs.netapp.com/sfe-122/index.jsp["Centro di documentazione software SolidFire ed Element"^]
+

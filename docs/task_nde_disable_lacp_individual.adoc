@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_disable_lacp_individual.html 
+summary: 'Informazioni su come disattivare il `lacp-individual` comando sugli switch configurati dopo la distribuzione di NetApp HCI.' 
+keywords: netapp, hci, deployment, review, deploy 
+---
+= Disattivare il comando "lacp-Individual" sugli switch configurati
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per impostazione predefinita, il comando switch Mellanox `lacp-individual` e il comando switch Cisco `lacp suspend-individual` rimangono configurati dopo la distribuzione. Questo comando non è richiesto dopo l'installazione; se rimane configurato, può causare problemi di accesso al volume durante la risoluzione dei problemi o il riavvio di uno switch. Dopo la distribuzione, è necessario controllare ogni configurazione di switch Mellanox e Cisco e rimuovere il `lacp-individual` comando o. `lacp suspend-individual`
+
+.Fasi
+. Utilizzando SSH, aprire una sessione per lo switch.
+. Mostra la configurazione in esecuzione:
++
+`show running-config`
+
+. Controllare l'uscita di configurazione del contattore per il `lacp-individual` comando o `lacp suspend-individual` .
++
+
+NOTE:  `xxx-xxx`Indica i numeri di interfaccia forniti dall'utente. Se necessario, è possibile accedere al numero di interfaccia visualizzando le interfacce Multi-chassis link Aggregation Group: `show mlag interfaces`
+
++
+.. Per uno switch Mellanox, verificare che l'output contenga la seguente riga:
++
+`interface mlag-port-channel xxx-xxx lacp-individual enable force`
+
+.. Per uno switch Cisco, verificare che l'output contenga la seguente riga:
++
+`interface mlag-port-channel xxx-xxx lacp suspend-individual enable force`
+
+
+
+. Se il comando è presente, rimuoverlo dalla configurazione.
++
+.. Per uno switch Mellanox:
++
+`no interface mlag-port-channel xxx-xxx lacp-individual enable force`
+
+.. Per uno switch Cisco:
+`no interface mlag-port-channel xxx-xxx lacp suspend-individual enable force`
+
+
+. Ripetere questa procedura per ogni switch della configurazione.
+
+
+[discrete]
+== Trova ulteriori informazioni
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/SolidFire_Bond10G_goes_down_when_flapping_an_interface_during_troubleshooting["Il nodo storage si spegne durante la risoluzione dei problemi"^]
+

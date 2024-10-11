@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_start_deployment.html 
+summary: Iniziare a implementare NetApp HCI. 
+keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, access 
+---
+= Avviare l'implementazione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di continuare con l'implementazione di NetApp HCI, è necessario leggere e comprendere i contratti di licenza per l'utente finale.
+
+.Fasi
+. Nella pagina *Benvenuti in NetApp HCI*, selezionare *inizia*.
+. Nella pagina *Prerequisiti*, procedere come segue:
++
+.. Assicurarsi che ogni prerequisito sia soddisfatto e selezionare ciascuna casella di controllo associata per confermare.
+.. Selezionare *continua*.
+
+
+. Nella pagina *licenze utente finale*, procedere come segue:
++
+.. Leggere il Contratto di licenza con l'utente finale di NetApp
+.. Se si accettano i termini, selezionare *Accetto* in fondo al testo dell'accordo.
+.. Leggi il contratto di licenza con l'utente finale di VMware.
+.. Se si accettano i termini, selezionare *Accetto* in fondo al testo dell'accordo.
+.. Selezionare *continua*.
+
+
+
+
+[discrete]
+== Trova ulteriori informazioni
+
+* link:firmware_driver_versions.html["Versioni del firmware e dei driver ESXi supportate per NetApp HCI e versioni del firmware per i nodi di storage NetApp HCI"]
+

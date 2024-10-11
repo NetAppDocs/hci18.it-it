@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_manage_overview.html 
+summary: Puoi gestire le credenziali per NetApp HCI, gli account utente, i cluster di storage, i volumi, i gruppi di accesso ai volumi, gli initiator, le policy di qualità del servizio dei volumi e il nodo di gestione. 
+keywords: netapp, hci, install, deploy, get started 
+---
+= Panoramica sulla gestione di NetApp HCI
+:allow-uri-read: 
+
+
+[role="lead"]
+Puoi gestire le credenziali per NetApp HCI, gli account utente, i cluster di storage, i volumi, i gruppi di accesso ai volumi, gli initiator, le policy di qualità del servizio dei volumi e il nodo di gestione.
+
+Di seguito sono riportati gli elementi che è possibile utilizzare:
+
+* link:task_hci_credentials_vcenter_esxi.html["Aggiornare le credenziali vCenter ed ESXi"]
+* link:task_hcc_manage_storage_overview.html["Gestire le risorse di storage NetApp HCI"]
+* link:task_mnode_work_overview.html["Lavorare con il nodo di gestione"]
+* link:concept_nde_hci_power_off_on.html["Spegnere e riaccendere il sistema NetApp HCI"]
+
+
+[discrete]
+== Trova ulteriori informazioni
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["Pagina delle risorse NetApp HCI"^]
+
