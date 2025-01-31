@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: docs/reference_notices_hci.html 
+permalink: legal-notices.html 
 keywords: copyrights, notice, trademarks, patents, privacy, open source 
 summary: 'Le note legali forniscono l"accesso a dichiarazioni di copyright, marchi, brevetti e altro ancora.' 
 translate: false 

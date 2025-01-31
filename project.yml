@@ -375,4 +375,4 @@ sidebar:
     - title: Sostituire il nodo di storage in un cluster a due nodi
       url: "/docs/task_hci_2noderepl.html"
   - title: Note legali
-    url: "/docs/reference_notices_hci.html"
+    url: "/legal-notices.html"
